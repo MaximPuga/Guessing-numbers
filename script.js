@@ -17,27 +17,15 @@ const eventHendler = function() {
     document.querySelector('body').style.backgroundColor = 'green';
     if(score > highScore) {
       highScore = score;
-      document.querySelector('.try').textContent = highScore;
+      document.querySelector('.try').textContent = `Best score: ${highScore}`;
     }
-//Too high
-   }else if(guessingNumber > secretNumber){
+//Number from input is wrong
+   }else if(guessingNumber !== secretNumber){
       if(score > 1) {
-         document.querySelector('.start').textContent = 'Too big';
+         document.querySelector('.start').textContent = guessingNumber > secretNumber ? 'Too big' : 'Too small';
          score--
          document.querySelector('.points').textContent =  `Points: ${score}`;
-      }else{
-         document.querySelector('.start').textContent = 'Game Over';
-         document.querySelector('.question').textContent = secretNumber;
-         document.querySelector('body').style.backgroundColor = 'red';
-         document.querySelector('.points').textContent = 0;
-      }
-
-//Too low
-   }else if(guessingNumber < secretNumber){
-      if(score > 1) {
-         document.querySelector('.start').textContent = 'Too small';
-         score--
-         document.querySelector('.points').textContent =  `Points: ${score}`;
+         document.querySelector('.try').textContent = `Best score: ${highScore}`;
       }else{
          document.querySelector('.start').textContent = 'Game Over';
          document.querySelector('.question').textContent = secretNumber;
@@ -55,5 +43,5 @@ const restartGuessing = function() {
    document.querySelector('.guess').value = '';
    document.querySelector('body').style.backgroundColor = 'black';
    };
-document.querySelector('.checker').addEventListener('click', eventHendler);
-document.querySelector('.btnAgain').addEventListener('click', restartGuessing);
+document.querySelector('.checker').addEventListener('click', eventHendler );
+document.querySelector('.btnAgain').addEventListener('click', restartGuessing)
