@@ -2,9 +2,10 @@
 let highScore = 0;
 let score = 20;
 let secretNumber = Math.trunc(Math.random()*20) +1;
-const eventHendler = function() {
+function eventHendler() {
    const guessingNumber = Number(document.querySelector('.guess').value);
    console.log(guessingNumber);
+   document.querySelector('.guess').value = '';
 
 //No input
    if(!guessingNumber) {
@@ -34,7 +35,7 @@ const eventHendler = function() {
       }
    }
 };
-const restartGuessing = function() {
+function restartGuessing() {
    secretNumber = Math.trunc(Math.random()*20) +1;
    score = 20;
    document.querySelector('.question').textContent = '???';
@@ -43,5 +44,14 @@ const restartGuessing = function() {
    document.querySelector('.guess').value = '';
    document.querySelector('body').style.backgroundColor = 'black';
    };
-document.querySelector('.checker').addEventListener('click', eventHendler );
-document.querySelector('.btnAgain').addEventListener('click', restartGuessing)
+document.querySelector('.btnAgain').addEventListener('click', restartGuessing);
+
+let input = document.querySelector(".guess");
+
+document.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    document.querySelector(".checker").click();
+    eventHendler();
+  }
+});
