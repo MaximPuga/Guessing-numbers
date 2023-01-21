@@ -51,7 +51,7 @@ let input = document.querySelector(".guess");
 document.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
-    document.querySelector(".checker").click();
+    document.querySelector(".checker").addEventListener('click', eventHendler);
     eventHendler();
   }
 });
