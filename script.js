@@ -8,10 +8,13 @@ function eventHendler() {
    console.log(guessingNumber);
    document.querySelector('.guess').value = '';
 
-//No input
+//No input and incorrect value
    if(!guessingNumber) {
    document.querySelector('.start').textContent = 'Input some number';
-
+   }else if(guessingNumber < 0){
+      document.querySelector('.start').textContent = 'Input correct number'
+   }else if(guessingNumber > 20){
+      document.querySelector('.start').textContent = 'Input correct number'
 //Player won
    }else if( guessingNumber === secretNumber){
     document.querySelector('.start').textContent = 'Right';
@@ -33,7 +36,9 @@ function eventHendler() {
          document.querySelector('.question').textContent = secretNumber;
          document.querySelector('body').style.backgroundColor = 'red';
          document.querySelector('.points').textContent = 0;
-      }
+      }   if(guessingNumber < 0){
+      document.querySelector('.start').textContent = 'Input correct number'
+   };
    }
 };
 function restartGuessing() {
