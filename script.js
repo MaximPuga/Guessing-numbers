@@ -2,6 +2,7 @@
 let highScore = 0;
 let score = 20;
 let secretNumber = Math.trunc(Math.random()*20) +1;
+let input = document.querySelector(".guess");
 function eventHendler() {
    const guessingNumber = Number(document.querySelector('.guess').value);
    console.log(guessingNumber);
@@ -46,7 +47,8 @@ function restartGuessing() {
    };
 document.querySelector('.btnAgain').addEventListener('click', restartGuessing);
 
-let input = document.querySelector(".guess");
+//For button use
+document.querySelector(".checker").addEventListener('click', eventHendler);
 
 document.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
